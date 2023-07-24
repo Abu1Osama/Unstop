@@ -25,7 +25,7 @@ Assessment Management System is a responsive web application built using React.j
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/your/repository.git`
+1. Clone the repository: `https://github.com/Abu1Osama/Unstop.git`
 2. Navigate to the project directory: `unstop`
 3. Install the dependencies: `npm install`
 
@@ -36,7 +36,7 @@ Assessment Management System is a responsive web application built using React.j
 3. Follow the on-screen instructions to navigate through the app and explore its features.
 
 ## Screenshots
-![Homepage]()
+![Homepage]('./src/assest/pic1.png')
 
 ## Deployment
 
@@ -44,4 +44,4 @@ The application can be deployed to a mobile device using the following steps:
 
 1. Build the application for production: `npm run build`
 2. Provide instructions to users on how to access and install the app on their mobile devices.
-3. Deployed Link of the application:- 
+3. Deployed Link of the application:- https://unstop-eta.vercel.app/
