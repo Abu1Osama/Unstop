@@ -36,7 +36,7 @@ Assessment Management System is a responsive web application built using React.j
 3. Follow the on-screen instructions to navigate through the app and explore its features.
 
 ## Screenshots
-![Homepage]('./src/assest/pic1.png')
+![Homepage](./src/assest/pic1.png)
 
 ## Deployment
 
