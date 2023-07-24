@@ -1,0 +1,224 @@
+#form.form {
+  .form-contain {
+    display: flex;
+    width: 591px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: -1px;
+    margin: auto; // added css line to design
+    .heading {
+      display: flex;
+      height: 70px;
+      padding: 30px;
+      justify-content: space-between;
+      align-items: center;
+      align-self: stretch;
+      border-radius: 8px 8px 0px 0px;
+      border: 1px solid var(--system-stroke-2, #dadce0);
+      background: #fff;
+      h2 {
+        color: var(--text-100, #1c4980);
+        text-align: center;
+        font-family: Inter;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+    }
+    .form-container {
+      display: flex;
+      padding: 20px 30px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      align-self: stretch;
+      border: 1px solid var(--system-stroke-2, #dadce0);
+      background: #fff;
+      .form-child {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        align-self: stretch;
+
+        .label {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 4px;
+          align-self: stretch;
+          p {
+            color: var(--text-100, #1c4980);
+            text-align: center;
+            font-family: Inter;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+          }
+        }
+        .skills {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: -1px;
+          align-self: stretch;
+          .skills-child {
+            display: flex;
+            padding: 16px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            align-self: stretch;
+            border-radius: 8px 8px 0px 0px;
+            border: 1px solid var(--system-divider, #dde5ea);
+            .skills-data {
+              display: flex;
+              align-items: flex-start;
+              gap: 10px;
+              align-self: stretch;
+              .skills-data-child {
+                display: flex;
+                padding: 6px 8px 6px 10px;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 2px;
+                border-radius: 22px;
+                background: var(--accent-blue-light, #ddedff);
+                .skills-data-child-div {
+                  display: flex;
+                  align-items: center;
+                  gap: 5px;
+                }
+                p {
+                  color: var(--text-100, #1c4980);
+                  font-family: Inter;
+                  font-size: 12px;
+                  font-style: normal;
+                  font-weight: 500;
+                  line-height: normal;
+                }
+              }
+            }
+          }
+          .inp-skills {
+            display: flex;
+            height: 50px;
+            padding: 16px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            align-self: stretch;
+            border-radius: 0px 0px 8px 8px;
+            border: 1px solid var(--system-divider, #dde5ea);
+            &::placeholder {
+              color: var(--text-100, #1c4980);
+              // text-align: center;
+              font-family: Inter;
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
+            }
+          }
+        }
+        .inp {
+          display: flex;
+          height: 50px;
+          padding: 15px;
+          align-items: center;
+          gap: 10px;
+          align-self: stretch;
+          border-radius: 8px;
+          border: 1px solid var(--system-stroke-2, #dadce0);
+          background: #fff;
+          &::placeholder {
+            color: var(--text-100, #1c4980);
+            // text-align: center;    // css givn but dont match the layout
+            font-family: Inter;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+          }
+        }
+      }
+    }
+    .btn {
+      display: flex;
+      padding: 20px 30px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 20px;
+      align-self: stretch;
+      border-radius: 0px 0px 8px 8px;
+      border-right: 1px solid var(--system-stroke-2, #dadce0);
+      border-bottom: 1px solid var(--system-stroke-2, #dadce0);
+      border-left: 1px solid var(--system-stroke-2, #dadce0);
+      background: #fff;
+      box-shadow: 0px -4px 50px 0px rgba(0, 0, 0, 0.09);
+      .save-btn {
+        display: flex;
+        height: 40px;
+        padding: 10px 30px;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        align-self: stretch;
+        border-radius: 8px;
+        background: var(--secondary-1, #0073e6);
+        border: none; // added css to the design
+
+        color: #fff;
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 601px) {
+  #form.form {
+    .form-contain {
+      display: flex;
+      width: 375px;
+      flex-direction: column;
+      align-items: flex-start;
+      box-shadow: 0px -5px 19px 0px rgba(0, 0, 0, 0.09);
+      .heading {
+        height: 60px;
+      }
+      .form-container {
+        display: flex;
+        height: 517px;
+        padding: 16px 15px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        align-self: stretch;
+        background: #fff;
+        overflow-y: scroll;
+        .skills-data{
+          flex-wrap: wrap;
+        }
+      }
+      .btn {
+        display: flex;
+        height: 60px;
+        padding: 7px 16px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 10px;
+        align-self: stretch;
+        border-top: 1px solid var(--system-stroke-2, #dadce0);
+        background: #fff;
+      }
+    }
+  }
+} ;
