@@ -24,7 +24,7 @@ import Form from "./Form";
 function Assessment() {
   const [currentPage, setCurrentPage] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
-  const [showTop, setShowTop] = useState(true);
+  const [showTop, setShowTop] = useState(false);
   const openPopup = () => {
     setShowPopup(true);
   };

@@ -30,6 +30,7 @@
     // align-self: stretch;
     // width: 90%;
     #assessment.assessment {
+      height: calc(100vh - 120px);
       .tag-heading {
         color: var(--text-100, #1c4980);
         font-feature-settings: "clig" off, "liga" off;
