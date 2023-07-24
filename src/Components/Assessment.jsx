@@ -204,6 +204,7 @@ function Assessment() {
                 <div className="data-child-top">
                   <div className="top-left">
                     <img src={box} alt="" />
+                    <div className="abcd">
                     <div>
                       <h2>Math Assessment</h2>
                     </div>
@@ -213,6 +214,7 @@ function Assessment() {
                         <img src={calender} alt="" />
                         <p>20 Apr 2023</p>
                       </div>
+                    </div>
                     </div>
                   </div>
                   <div className="top-right">
@@ -258,6 +260,7 @@ function Assessment() {
                 <div className="data-child-top">
                   <div className="top-left">
                     <img src={box} alt="" />
+                    <div className="abcd">
                     <div>
                       <h2>Math Assessment</h2>
                     </div>
@@ -268,6 +271,8 @@ function Assessment() {
                         <p>20 Apr 2023</p>
                       </div>
                     </div>
+                    </div>
+                  
                   </div>
                   <div className="top-right">
                     <img src={dot} alt="" />

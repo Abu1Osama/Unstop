@@ -46,7 +46,6 @@
       .top {
         .top-data {
           display: flex;
-          width: 1224px;
           align-items: flex-start;
           gap: 1px;
           border-radius: 12px;
@@ -395,6 +394,12 @@
               justify-content: center;
               align-items: flex-start;
               gap: 10px;
+              .abcd{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2px;
+              }
               .job-line {
                 display: flex;
                 align-items: center;
@@ -506,6 +511,10 @@
   }
 }
 
+
+
+
+
 @media screen and (max-width: 601px) {
   #main-assess.main-assess {
     grid-template-columns:100%;
@@ -584,6 +593,24 @@
           flex-direction: column;
           align-items: flex-start;
           gap: 20px;
+          .section-child{
+            h2{
+              color: var(--text-100, #1C4980);
+              text-align: center;
+              font-family: Inter;
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: normal;
+            }
+          }
+          .data-child {
+            .data-child-top {
+              .top-left{
+                flex-direction: row;
+              }
+            }
+          }
         }
         .section-top {
           display: flex;
