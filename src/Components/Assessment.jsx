@@ -22,9 +22,9 @@ import Lib from "./Lib";
 import Form from "./Form";
 
 function Assessment() {
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const [showPopup, setShowPopup] = useState(false);
-  const [showTop, setShowTop] = useState(false);
+  const [showTop, setShowTop] = useState(true);
   const openPopup = () => {
     setShowPopup(true);
   };

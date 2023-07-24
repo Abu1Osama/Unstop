@@ -53,6 +53,7 @@
       align-items: center;
       gap: 16px;
       align-self: stretch;
+      user-select: none;
       .admin {
         display: flex;
         flex-direction: column;

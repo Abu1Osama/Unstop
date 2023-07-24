@@ -8,7 +8,7 @@ import "../Styles/Navmenu.scss";
 import cut from "../assest/cut.png";
 
 function Navmenu({ setCurrentPage, isMenuOpen, setMenuOpen }) {
-  const [currentindex, setCurrentindex] = useState(0);
+  const [currentindex, setCurrentindex] = useState(1);
   const [side_data, setSidedata] = useState([
     {
       name: "Dashboard",

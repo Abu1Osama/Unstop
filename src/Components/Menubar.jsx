@@ -7,7 +7,7 @@ import admin_meds from "../assest/admin_meds.png";
 import "../Styles/Menubar.scss";
 
 function Menubar({ setCurrentPage }) {
-  const [currentindex, setCurrentindex] = useState(0);
+  const [currentindex, setCurrentindex] = useState(1);
   const [side_data, setSidedata] = useState([
     {
       name: "Dashboard",
