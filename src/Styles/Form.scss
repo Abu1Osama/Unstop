@@ -1,4 +1,23 @@
 #form.form {
+  @keyframes sam {
+    from {
+      transform: translateY(90%);
+    }
+    to {
+      transform: translateY(0%);
+    }
+  }
+  animation: sam 0.5s forwards;
+
+  @keyframes sam-closing {
+    from {
+      transform: translateY(0%);
+    }
+    to {
+      transform: translateY(100%);
+    }
+  }
+
   .form-contain {
     display: flex;
     width: 591px;
@@ -143,7 +162,6 @@
             font-weight: 500;
             line-height: normal;
           }
-          
         }
       }
     }
@@ -223,4 +241,4 @@
       }
     }
   }
-} ;
+}

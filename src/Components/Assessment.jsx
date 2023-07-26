@@ -27,13 +27,25 @@ function Assessment() {
   const [showPopup, setShowPopup] = useState(false);
   const [showTop, setShowTop] = useState(true);
   const [arr, setArr] = useState([]);
+  const [style, setStyle] = useState({
+    animation: "sam 0.5s forwards",
+  });
   console.log(arr);
+
   const openPopup = () => {
+    setStyle({
+      animation: "sam 0.5s forwards",
+    });
     setShowPopup(true);
   };
 
   const closePopup = () => {
-    setShowPopup(false);
+    setStyle({
+      animation: "sam-closing 0.5s forwards",
+    });
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 500);
   };
   const opendata = () => {
     setShowTop((prevShowTop) => !prevShowTop);
@@ -459,14 +471,13 @@ function Assessment() {
           <Lib />
         )}
       </div>
-      {showPopup && (
-        <div className="popup" onClick={closePopup}>
-          <Form
-            closePopup={closePopup}
-            updateAssessmentData={updateAssessmentData}
-          />
-        </div>
-      )}
+      <div className={`popup ${showPopup && "showPopup"}`} onClick={closePopup}>
+        <Form
+          closePopup={closePopup}
+          updateAssessmentData={updateAssessmentData}
+          style={style}
+        />
+      </div>
     </div>
   );
 }

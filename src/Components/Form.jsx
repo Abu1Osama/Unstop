@@ -5,7 +5,8 @@ import close from "../assest/close.png";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 
-function Form({ closePopup, updateAssessmentData }) {
+function Form({ closePopup, updateAssessmentData ,style}) {
+ 
   const [formData, setFormData] = useState({
     name: "",
     purpose: "",
@@ -15,21 +16,32 @@ function Form({ closePopup, updateAssessmentData }) {
   });
   const [newSkill, setNewSkill] = useState("");
   const [inputValue, setInputValue] = useState("");
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    purpose: "",
+    description: "",
+    skills: "",
+    duration: "",
+  });
 
+  // Function to handle click events within the form
   const handleFormClick = (event) => {
     event.stopPropagation();
   };
 
+  // Function to update form data when inputs change
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  // Function to handle skill change in the skills input
   const handleSkillChange = (event) => {
     setNewSkill(event.target.value);
     setInputValue(event.target.value);
   };
 
+  // Function to handle "Enter" key press in the skills input
   const handleKeyPress = (event) => {
     if (event.key === "Enter" && newSkill.trim() !== "") {
       if (!formData.skills.includes(newSkill.trim())) {
@@ -53,6 +65,7 @@ function Form({ closePopup, updateAssessmentData }) {
     }
   };
 
+  // Function to handle blur event in the skills input
   const handleBlur = () => {
     if (newSkill.trim() !== "") {
       setFormData({
@@ -64,42 +77,104 @@ function Form({ closePopup, updateAssessmentData }) {
     }
   };
 
+  // Function to remove a skill from the skills list
   const handleRemoveSkill = (skill) => {
     const updatedSkills = formData.skills.filter((s) => s !== skill);
     setFormData({ ...formData, skills: updatedSkills });
   };
 
-  const handleSaveButtonClick = () => {
-    axios
-      .get("https://semi-mock2.onrender.com/cars")
-      .then((response) => {
-        const existingData = response.data;
-        const isDuplicate = existingData.some((data) => {
-          return (
-            data.name === formData.name &&
-            data.purpose === formData.purpose &&
-            data.description === formData.description &&
-            data.duration === formData.duration &&
-            JSON.stringify(data.skills) === JSON.stringify(formData.skills)
-          );
-        });
+  // Function to validate the form data
+  const validateForm = () => {
+    let isValid = true;
+    const errors = {};
 
-        if (!isDuplicate) {
-          axios
-            .post("https://semi-mock2.onrender.com/cars", formData)
-            .then((response) => {
-              toast.success("Form data posted successfully", {
-                style: {
-                  borderRadius: "50px",
-                  background: "#000428",
-                  color: "#ffffff",
-                  padding: "1rem 1.5rem",
-                  fontWeight: "600",
-                },
-              });
-              updateAssessmentData();
-              closePopup();
-            })
+    if (formData.name.trim() === "") {
+      errors.name = "Name is required";
+      isValid = false;
+    }
+
+    if (formData.purpose.trim() === "") {
+      errors.purpose = "Purpose is required";
+      isValid = false;
+    }
+
+    if (formData.description.trim() === "") {
+      errors.description = "Description is required";
+      isValid = false;
+    }
+
+    if (formData.skills.length === 0) {
+      errors.skills = "At least one skill is required";
+      isValid = false;
+    }
+
+    if (formData.duration.trim() === "") {
+      errors.duration = "Duration is required";
+      isValid = false;
+    }
+
+    setFormErrors(errors);
+    return isValid;
+  };
+
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+  
+  // Function to handle the Save button click
+  const handleSaveButtonClick = () => {
+    if (!validateForm()) {
+      toast.error("Please fill in all required fields.", {
+        style: {
+          borderRadius: "50px",
+          background: "#000428",
+          color: "#ffffff",
+          padding: "1rem 1.5rem",
+          fontWeight: "600",
+        },
+      });
+      return;
+    }
+      // Capitalize the first letter of each field
+  const capitalizedFormData = {
+    name: capitalizeFirstLetter(formData.name),
+    purpose: capitalizeFirstLetter(formData.purpose),
+    description: capitalizeFirstLetter(formData.description),
+    duration: formData.duration,
+    skills: formData.skills.map((skill) => capitalizeFirstLetter(skill)),
+  };
+
+
+    axios
+    .get("https://semi-mock2.onrender.com/cars")
+    .then((response) => {
+      const existingData = response.data;
+      const isDuplicate = existingData.some((data) => {
+        return (
+          data.name === capitalizedFormData.name &&
+          data.purpose === capitalizedFormData.purpose &&
+          data.description === capitalizedFormData.description &&
+          data.duration === capitalizedFormData.duration &&
+          JSON.stringify(data.skills) === JSON.stringify(capitalizedFormData.skills)
+        );
+      });
+
+      if (!isDuplicate) {
+        axios
+          .post("https://semi-mock2.onrender.com/cars", capitalizedFormData)
+          .then((response) => {
+            toast.success("Form data posted successfully", {
+              style: {
+                borderRadius: "50px",
+                background: "#000428",
+                color: "#ffffff",
+                padding: "1rem 1.5rem",
+                fontWeight: "600",
+              },
+            });
+            updateAssessmentData();
+            closePopup();
+          })
             .catch((error) => {
               toast.error("Error posting form data", {
                 style: {
@@ -136,8 +211,12 @@ function Form({ closePopup, updateAssessmentData }) {
       });
   };
 
+  // Set the form visibility when the component mounts
+  
+
   return (
-    <div id="form" className="form" onClick={handleFormClick}>
+
+    <div id="form" className="form " style={style} onClick={handleFormClick}>
       <div className="form-contain">
         <div className="heading">
           <h2>Create new assessment</h2>

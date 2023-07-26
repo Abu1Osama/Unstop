@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../Styles/Navbar.scss";
 import vector250 from "../assest/Vector250.png";
 import mobile from "../assest/mob.png";
+import desktop from "../assest/laptop_mac.png";
 import segment from "../assest/segment.png";
 import Navmenu from "./Navmenu";
 
@@ -39,7 +40,8 @@ function Navbar({ currentindex, side_data, setCurrentPage }) {
           />
         </div>
         <div className="mobile_view">
-          <img src={mobile} alt="" />
+          <img className="mb" src={mobile} alt="" />
+          <img className="dp" src={desktop} alt="" />
         </div>
       </div>
     </div>
