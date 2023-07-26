@@ -6,11 +6,11 @@ import segment from "../assest/segment.png";
 import Navmenu from "./Navmenu";
 
 function Navbar({ currentindex, side_data, setCurrentPage }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const selectedName = side_data[currentindex]?.name || "Assessment";
   const handleMenuIconClick = () => {
-    setIsMenuOpen(!isMenuOpen); 
+    setIsMenuOpen(!isMenuOpen);
   };
   return (
     <div className="nav" id="nav">

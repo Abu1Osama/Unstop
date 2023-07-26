@@ -76,6 +76,7 @@
             .skills-data {
               display: flex;
               align-items: flex-start;
+              flex-wrap: wrap;
               gap: 10px;
               align-self: stretch;
               .skills-data-child {
@@ -114,7 +115,7 @@
             border: 1px solid var(--system-divider, #dde5ea);
             &::placeholder {
               color: var(--text-100, #1c4980);
-              // text-align: center;
+
               font-family: Inter;
               font-size: 14px;
               font-style: normal;
@@ -135,16 +136,14 @@
           background: #fff;
           &::placeholder {
             color: var(--text-100, #1c4980);
-            // text-align: center;    // css givn but dont match the layout
+
             font-family: Inter;
             font-size: 14px;
             font-style: normal;
             font-weight: 500;
             line-height: normal;
           }
-          option{
-            color: red;
-          }
+          
         }
       }
     }
@@ -206,7 +205,7 @@
         align-self: stretch;
         background: #fff;
         overflow-y: scroll;
-        .skills-data{
+        .skills-data {
           flex-wrap: wrap;
         }
       }

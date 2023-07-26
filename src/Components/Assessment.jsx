@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Styles/Assessment.scss";
 
 import view_agenda from "../assest/view_agenda.png";
@@ -20,11 +20,14 @@ import Menubar from "./Menubar";
 import Desk from "./Desk";
 import Lib from "./Lib";
 import Form from "./Form";
+import axios from "axios";
 
 function Assessment() {
   const [currentPage, setCurrentPage] = useState(1);
   const [showPopup, setShowPopup] = useState(false);
   const [showTop, setShowTop] = useState(true);
+  const [arr, setArr] = useState([]);
+  console.log(arr);
   const openPopup = () => {
     setShowPopup(true);
   };
@@ -33,7 +36,7 @@ function Assessment() {
     setShowPopup(false);
   };
   const opendata = () => {
-    setShowTop((prevShowTop) => !prevShowTop); // Toggle the value of showTop
+    setShowTop((prevShowTop) => !prevShowTop);
   };
   const side_data = [
     {
@@ -49,12 +52,46 @@ function Assessment() {
       active: "none",
     },
   ];
+
+  useEffect(() => {
+    axios
+      .get("https://semi-mock2.onrender.com/cars")
+      .then((response) => {
+        setArr(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data from API:", error);
+      });
+  }, []);
+  const updateAssessmentData = () => {
+    axios
+      .get("https://semi-mock2.onrender.com/cars")
+      .then((response) => {
+        setArr(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data from API:", error);
+      });
+  };
+
+  const getFormattedDate = () => {
+    const currentDate = new Date();
+    const options = { day: "numeric", month: "short", year: "numeric" };
+    const formattedDate = currentDate.toLocaleDateString(undefined, options);
+    return formattedDate;
+  };
+
+  const formattedDate = getFormattedDate();
   return (
     <div className="main-assess" id="main-assess">
       <Menubar setCurrentPage={setCurrentPage} />
 
       <div className="page" id="page">
-        <Navbar currentindex={currentPage} side_data={side_data} setCurrentPage={setCurrentPage}  />
+        <Navbar
+          currentindex={currentPage}
+          side_data={side_data}
+          setCurrentPage={setCurrentPage}
+        />
         {currentPage === 0 ? (
           <Desk />
         ) : currentPage == 1 ? (
@@ -69,7 +106,7 @@ function Assessment() {
                       <img src={view_agenda} alt="" />
                       <div className="child-candid">
                         <div className="child-candid-data">
-                          <h2>34</h2>
+                          <h2>{arr.length + 2}</h2>
                         </div>
                       </div>
                     </div>
@@ -205,16 +242,16 @@ function Assessment() {
                   <div className="top-left">
                     <img src={box} alt="" />
                     <div className="abcd">
-                    <div>
-                      <h2>Math Assessment</h2>
-                    </div>
-                    <div className="job-line">
-                      <h2>Job</h2>
-                      <div className="job-line">
-                        <img src={calender} alt="" />
-                        <p>20 Apr 2023</p>
+                      <div>
+                        <h2>Math Assessment</h2>
                       </div>
-                    </div>
+                      <div className="job-line">
+                        <h2>Job</h2>
+                        <div className="job-line">
+                          <img src={calender} alt="" />
+                          <p>20 Apr 2023</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div className="top-right">
@@ -261,18 +298,17 @@ function Assessment() {
                   <div className="top-left">
                     <img src={box} alt="" />
                     <div className="abcd">
-                    <div>
-                      <h2>Math Assessment</h2>
-                    </div>
-                    <div className="job-line">
-                      <h2>Job</h2>
+                      <div>
+                        <h2>Math Assessment</h2>
+                      </div>
                       <div className="job-line">
-                        <img src={calender} alt="" />
-                        <p>20 Apr 2023</p>
+                        <h2>Job</h2>
+                        <div className="job-line">
+                          <img src={calender} alt="" />
+                          <p>20 Apr 2023</p>
+                        </div>
                       </div>
                     </div>
-                    </div>
-                  
                   </div>
                   <div className="top-right">
                     <img src={dot} alt="" />
@@ -333,6 +369,91 @@ function Assessment() {
                 </div>
               </div>
             </div>
+            <div className="map-section">
+              <div className="map-data">
+                {arr.map((item) => (
+                  <div className="section-child data-child">
+                    <div className="data-child-top">
+                      <div className="top-left">
+                        <img src={box} alt="" />
+                        <div className="abcd">
+                          <div>
+                            <h2>{item.name}</h2>
+                          </div>
+                          <div className="job-line">
+                            <h2>{item.purpose}</h2>
+                            <div className="job-line">
+                              <img src={calender} alt="" />
+                              <p>{formattedDate}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="top-right">
+                        <img src={dot} alt="" />
+                      </div>
+                    </div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="356"
+                      height="2"
+                      viewBox="0 0 356 2"
+                      fill="none"
+                    >
+                      <path
+                        d="M0 1H356"
+                        stroke="#DADCE0"
+                        stroke-dasharray="3 3"
+                      />
+                    </svg>
+                    <div className="data-child-bottom">
+                      <div className="data-child-bottom-child">
+                        <div>
+                          <p>00</p>
+                          <p className="duration">Duration</p>
+                        </div>
+                        <div>
+                          <p>00</p>
+                          <p className="duration">Questions</p>
+                        </div>
+                      </div>
+                      <div className="data-child-bottom-child">
+                        <div className="attach">
+                          <img src={link} alt="" />
+                          <p className="share">Share</p>
+                        </div>
+                        <div className="user-ico-div">
+                          <div className="user-ico-a">
+                            <div
+                              style={{ background: "#6548EE" }}
+                              className="user-ico-nested"
+                            >
+                              <h2 className="user-ico">LP</h2>
+                            </div>
+                          </div>
+                          <div className="user-ico-a">
+                            <div
+                              style={{ background: "#3079E1" }}
+                              className="user-ico-nested"
+                            >
+                              <h2 className="user-ico">LP</h2>
+                            </div>
+                          </div>
+                          <div className="user-ico-a">
+                            <div
+                              style={{ background: "#E9407A" }}
+                              className="user-ico-nested"
+                            >
+                              <h2 className="user-ico">LP</h2>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         ) : (
           <Lib />
@@ -340,7 +461,10 @@ function Assessment() {
       </div>
       {showPopup && (
         <div className="popup" onClick={closePopup}>
-          <Form closePopup={closePopup} />
+          <Form
+            closePopup={closePopup}
+            updateAssessmentData={updateAssessmentData}
+          />
         </div>
       )}
     </div>

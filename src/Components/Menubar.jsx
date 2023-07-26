@@ -28,7 +28,7 @@ function Menubar({ setCurrentPage }) {
   ]);
   const handleItemClick = (index) => {
     setCurrentindex(index);
-    setCurrentPage(index); // Pass the current index to the parent component (Assessment)
+    setCurrentPage(index); 
   };
 
   return (

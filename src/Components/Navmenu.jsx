@@ -29,18 +29,23 @@ function Navmenu({ setCurrentPage, isMenuOpen, setMenuOpen }) {
 
   const handleItemClick = (index) => {
     setCurrentindex(index);
-    setCurrentPage(index); 
+    setCurrentPage(index);
     setMenuOpen(false);
   };
   const handleCloseMenu = () => {
-    console.log("first")
+    console.log("first");
     setMenuOpen(false);
   };
   return (
     <div className={`Navmenu ${isMenuOpen ? "open" : ""}`} id="Navmenu">
       <div className="top-menu">
         <p>Menu</p>
-        <img className="close-popup"   onClick={handleCloseMenu} src={cut} alt="" />
+        <img
+          className="close-popup"
+          onClick={handleCloseMenu}
+          src={cut}
+          alt=""
+        />
       </div>
       <div className="menubar-main">
         <div className="card">
